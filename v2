@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Sweet Tooth - Design Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Poppins:wght@400;500;600&family=Roboto&family=Open+Sans&family=Lato&display=swap" rel="stylesheet">
+    <style>
+        /* Previous styles remain the same until preview-shape class */
+        .preview-shape {
+            overflow: hidden;
+            position: relative;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        /* Rest of the original styles remain the same until print-item class */
+        .print-item {
+            overflow: hidden;
+            position: relative;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Add new save button styles */
+        .save-btn {
+            background: #4CAF50;
+            margin-left: 10px;
+        }
+
+        .save-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Previous HTML remains the same until action-buttons div -->
+    <div class="action-buttons">
+        <button onclick="createPrintLayout()">Create Print Layout</button>
+        <button onclick="window.print()">Print</button>
+        <button onclick="saveDesign()" class="save-btn">Save Design</button>
+    </div>
+
+    <script>
+        // Previous JavaScript remains the same until the end
+        
+        // Add new save function
+        function saveDesign() {
+            const printLayout = document.querySelector('.print-layout');
+            
+            // Create a canvas and draw the print layout
+            html2canvas(printLayout).then(canvas => {
+                // Create download link
+                const link = document.createElement('a');
+                link.download = 'sweet-tooth-design.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+    
+    <!-- Add html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
