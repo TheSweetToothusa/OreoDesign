@@ -218,7 +218,13 @@
         button:hover {
             background: #ff1493;
         }
-
+.save-btn {
+    background: #4CAF50;
+    margin-left: 10px;
+}
+.save-btn:hover {
+    background: #45a049;
+}
         @media print {
             @page {
                 size: letter;
@@ -303,10 +309,11 @@
         </div>
     </div>
 
-    <div class="action-buttons">
-        <button onclick="createPrintLayout()">Create Print Layout</button>
-        <button onclick="window.print()">Print</button>
-    </div>
+  <div class="action-buttons">
+    <button onclick="createPrintLayout()">Create Print Layout</button>
+    <button onclick="window.print()">Print</button>
+    <button onclick="saveDesign()" class="save-btn">Save Design</button>
+</div>
 
     <div class="print-layout">
         <div id="print-grid" class="print-grid"></div>
@@ -436,6 +443,18 @@
             
             document.querySelector('.print-layout').style.display = 'block';
         }
+        function saveDesign() {
+    const printLayout = document.querySelector('.print-layout');
+    
+    html2canvas(printLayout).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'sweet-tooth-design.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    });
+}
+</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </script>
 </body>
 </html>
