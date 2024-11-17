@@ -268,6 +268,9 @@
 
             <label for="image-upload">Upload Image:</label>
             <input type="file" id="image-upload" accept="image/*">
+            <label for="image-size">Image Size:</label>
+<input type="range" id="image-size" min="10" max="100" value="100">
+<span id="size-value">100%</span>
 
             <div id="rotation-controls" class="rotation-controls">
                 <label>Rotate Image:</label>
@@ -334,6 +337,15 @@
         const rotationControls = document.getElementById('rotation-controls');
         const rotationSlider = document.getElementById('rotation-slider');
         const rotationValue = document.getElementById('rotation-value');
+        const imageSize = document.getElementById('image-size');
+const sizeValue = document.getElementById('size-value');
+
+imageSize.addEventListener('input', function() {
+    const size = this.value;
+    sizeValue.textContent = size + '%';
+    previewImage.style.width = size + '%';
+    previewImage.style.height = size + '%';
+});
 
         let currentImageDataUrl = '';
         let currentRotation = 0;
