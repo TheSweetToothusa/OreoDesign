@@ -1,4 +1,4 @@
-
+<style>
 
 <!DOCTYPE html>
 <html>
@@ -93,13 +93,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         #preview-image {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            padding: 5%;
+            object-fit: cover;
+            padding: 0;
             box-sizing: border-box;
         }
 
@@ -246,6 +247,18 @@
                 left: 0;
                 top: 0;
             }
+        }
+
+        .crop-controls {
+            display: none;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .crop-slider {
+            width: 100%;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -470,4 +483,4 @@ imageSize.addEventListener('input', function() {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </script>
 </body>
-</html>
+</html>v
